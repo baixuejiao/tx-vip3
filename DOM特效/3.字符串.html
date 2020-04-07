@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str = 'hello world'
+    console.log(str.length) // 字符串的长度
+
+    var s1 = new String()
+    console.log(s1)
+
+    // replace 字符串替换
+    var s2 = str.replace('world','xiaoming')
+    console.log(s2)
+
+    // split 把字符串转换成数组
+    var a1 = str.split(' ')
+    console.log(a1)
+
+    // indexOf 检索字符串中是否包含指定字符串 如果有 返回首次出现的位置 没有返回-1
+    console.log(str.indexOf('wo')) //6
+    console.log(str.indexOf('wox')) // -1
+
+    // slice（start,end） 截取字符串从start开始到end 不包含end
+    console.log(str.slice(1,7)) // ello w
+    // sunstring(start, end) 截取字符串从start开始到end 不包含end
+    console.log(str.substring(1,7))
+
+  </script>
+</body>
+</html>
