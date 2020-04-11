@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      width: 750px;
+      height: 500px;
+      margin: 50px auto 0;
+      position: relative;
+    }
+
+    #swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    #swiper > img {
+      display: none;
+    }
+
+    #swiper > .active {
+      display: block;
+    }
+
+    #pointer {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+    }
+
+    #pointer li {
+      float: left;
+      width: 22px;
+      height: 22px;
+      margin-right: 5px;
+      line-height: 22px;
+      text-align: center;
+      list-style: none;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      cursor: pointer;
+    }
+
+    #pointer .selected{
+      background: red;
+    }
+
+    #left,#right{
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-top: -25px;
+      background: rgba(0,0,0,0.6);
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+    }
+
+    #left {
+      left: 10px
+    }
+
+    #right {
+      right: 10px;
+    }
+
+    #left::after{
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-left: 5px solid #fff;
+      border-bottom: 5px solid #fff;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 15px;
+      top: 10px
+    }
+
+    #right::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-right: 5px solid #fff;
+      border-bottom: 5px solid #fff;
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="swiper">
+      <img class="active" src="../imgs/1.jpg" alt="">
+      <img src="../imgs/2.jpg" alt="">
+      <img src="../imgs/3.jpg" alt="">
+      <img src="../imgs/4.jpg" alt="">
+      <img src="../imgs/5.jpg" alt="">
+    </div>
+
+    <ul id="pointer">
+      <li class="selected">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <span id="left"></span>
+    <span id="right"></span>
+
+  </div>
+
+
+  <script>
+    // 1.获取元素
+    var oPointer = document.getElementById('pointer')
+    var aLi = oPointer.getElementsByTagName('li')
+
+    var oSwiper = document.getElementById('swiper')
+    var aImg = oSwiper.getElementsByTagName('img')
+
+    var oRight = document.getElementById('right')
+    var oLeft = document.getElementById('left')
+
+    var oCon = document.getElementById('container')
+
+    // tag 标记当前展示第几张图片
+    var tag = 0
+
+    // 定义一个定时器
+    var Timer
+
+    // 2.给Li绑定点击事件
+    for(var i=0; i<aLi.length; i++) {
+      // 给li绑定自定义属性index，值是它对应的索引
+      aLi[i].index = i
+
+      // li点击事件 找到对应的img 展示出来
+      aLi[i].onclick = function() {
+        tag = this.index
+        
+        // // 取消所有li的class img也需要取消class
+        // for(var j=0; j<aLi.length; j++) {
+        //   aLi[j].className = ''
+        //   aImg[j].className = ''
+        // }
+
+        // // this -> 点击的li
+        // this.className = 'selected'
+        // aImg[this.index].className = 'active'
+
+        changeSlider()
+
+      }
+    }
+
+    // 3.给right绑定点击事件
+    oRight.onclick = function() {
+      tag++
+
+      // 边界条件判断
+      tag = tag > aLi.length-1 ? 0 : tag
+
+      changeSlider()
+      // for(var i=0; i<aLi.length; i++) {
+      //   aLi[i].className = ''
+      //   aImg[i].className = ''
+
+      // }
+      // aLi[tag].className = 'selected'
+      // aImg[tag].className = 'active'
+    }
+
+    // 4.给left绑定点击事件
+    oLeft.onclick = function() {
+      tag--
+      // 边界判断
+      tag = tag < 0 ? aLi.length-1 : tag
+
+      changeSlider()
+
+      // for(var i=0; i<aLi.length; i++) {
+      //   aLi[i].className = ''
+      //   aImg[i].className = ''
+
+      // }
+      // aLi[tag].className = 'selected'
+      // aImg[tag].className = 'active'
+    }
+
+
+    // 5.将清除li和img样式并添加class的部分抽离出来封装成函数
+    function changeSlider() {
+      // 取消所有li的class img也需要取消class
+      for(var i=0; i<aLi.length; i++) {
+        aLi[i].className = ''
+        aImg[i].className = ''
+
+      }
+      // 在设置被选中的class
+      aLi[tag].className = 'selected'
+      aImg[tag].className = 'active'
+    }
+
+
+    // 6.轮播图自己动起来（开启一个定时器）
+    // Timer = setInterval(function(){
+    //   oRight.onclick()
+    // }, 1000)
+    goSwiper()
+
+
+    // 7.鼠标移入到container里是 清除定时器
+    oCon.onmouseover = function() {
+      clearInterval(Timer)
+    }
+
+    // 8.鼠标移出container时再开启定时器
+    oCon.onmouseout = function() {
+      goSwiper()
+      // Timer = setInterval(function(){
+      //   oRight.onclick()
+      // }, 1000)
+    }
+
+    // 9.封装开启定时器的函数
+    function goSwiper() {
+      Timer = setInterval(function(){
+        oRight.onclick()
+      }, 1000)
+    }
+
+
+
+  </script>
+</body>
+</html>
