@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* reset.css */
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    #small{
+      float: left;
+      width: 400px;
+      height: 400px;
+      position: relative;
+    }
+
+    #small > img {
+      width: 100%;
+      
+    }
+
+    #drag {
+      display: none;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+
+    #big {
+      display: none;
+      float: left;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #big img{
+      width: 800px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="small">
+    <img src="../imgs/s.png" alt="">
+    <div id="drag"></div>
+  </div>
+
+  <div id="big">
+    <img src="../imgs/b.png" alt="">
+  </div>
+
+  <script>
+
+    // 1.获取元素
+    var oSmall = document.getElementById('small')
+    var oDrag = document.getElementById('drag')
+    var oBig = document.getElementById('big')
+    // 类数组
+    var oImg = oBig.getElementsByTagName('img')[0]
+
+    /**
+    * 获取元素的宽高
+    */
+    // 元素的宽度 
+    // offsetWidth = width + padding + border
+    // clientWidth = width + padding
+    // 元素高度
+    // offsetHeight = height + padding + border
+    // clientHeight = height + padding
+
+    // offsetTop 当前元素到已定位的组先元素的top方向的距离
+    // offsetLeft 当前元素到已定位的祖先元素的left方向的距离
+
+
+
+    // 2.small绑定鼠标移入事件
+    oSmall.onmouseover = function() {
+      // 鼠标移入时 drag/big显示
+      oDrag.style.display = 'block'
+      oBig.style.display = 'block'
+
+      // 鼠标移动时的事件
+      oSmall.onmousemove = function(event) {
+
+        // 修改drag的位置
+        oDrag.style.left = event.clientX - oDrag.offsetWidth / 2 + 'px'
+        oDrag.style.top = event.clientY - oDrag.offsetHeight / 2 + 'px'
+
+
+        // 边界判断 
+        if (oDrag.offsetLeft < 0) {
+          oDrag.style.left = 0
+        }
+
+        if (oDrag.offsetTop < 0) {
+          oDrag.style.top = 0
+        }
+
+        // 获取darg可移动的最大距离
+        var maxSmallLeft = oSmall.offsetWidth - oDrag.offsetWidth
+        var maxSmallTop = oSmall.offsetHeight - oDrag.offsetHeight
+
+        if (oDrag.offsetLeft > maxSmallLeft) {
+          // 设置样式的时候要加单位
+          oDrag.style.left = maxSmallLeft + 'px'
+        }
+
+        if (oDrag.offsetTop > maxSmallTop) {
+          oDrag.style.top = maxSmallTop + 'px'
+        }
+
+        // big可移动的最大距离
+        var maxBigLeft = oImg.offsetWidth - oBig.offsetWidth
+        var maxBigTop = oImg.offsetHeight - oBig.offsetHeight
+
+        // 元素移动的距离 与 最大可移动距离的比例时相同的
+        // 求出小图移动的比例
+        var perx = oDrag.offsetLeft / maxSmallLeft
+        var pery = oDrag.offsetTop / maxSmallTop
+
+        oImg.style.left = -perx * maxBigLeft + 'px'
+        oImg.style.top = -pery * maxBigTop + 'px'
+
+      }
+    }
+
+    // 3.鼠标从small移出后 drag和big要隐藏
+    oSmall.onmouseout = function() {
+      oDrag.style.display = 'none'
+      oBig.style.display = 'none'
+    }
+
+  </script>
+</body>
+</html>

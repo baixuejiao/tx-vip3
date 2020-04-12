@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div{
+      /* width: 200px; */
+      /* height: 200px; */
+      background: red;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div style="width:400px;height:400px"></div>
+
+  <script>
+    var oDiv = document.getElementsByTagName('div')[0]
+
+    console.log(oDiv.offsetWidth) 
+    console.log(oDiv.style.width)
+
+    // oDiv.offsetWidth 用于获取元素的宽度 （可以获取到内联样式/内部样式/外部样式）
+    // oDiv.style.width 一般用于设置元素的宽度（设置的是内联样式）
+
+
+  </script>
+</body>
+</html>
