@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+
+    var关键字定义的变量会出现变量提升问题
+
+  -->
+  <script>
+    // console.log(a) // undefined
+    // var a = 123
+
+    // 变量提升的效果
+    var a;
+    console.log(a)
+    a = 123
+
+   
+    // fun1() // 'hello'
+    function fun1() {
+      console.log('hello')
+    }
+    // fun1() // 'hello'
+
+    // fun2() //fun2 is not a function
+    var fun2 = function() {
+      console.log('world')
+    }
+    // fun2() // 'world'
+
+
+    var x = 1
+    function fun3() {
+      console.log(x) // undefined x-> 局部的 有变量提升
+      var x = 2
+    }
+    fun3()
+
+
+    var x = 1
+    function fun4() {
+      console.log(x) // 1 x->全局
+      x = 2
+    }
+    fun4()
+
+
+
+  </script>
+</body>
+</html>

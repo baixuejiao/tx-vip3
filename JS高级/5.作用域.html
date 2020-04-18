@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    作用域： 变量或者函数的可访问性/可见性
+    作用域相当于形成了一个独立的区域/范围 对应的变量或者是函数只在这个区域内有效
+  -->
+
+  <script>
+    function fn1() {
+      var qm = 'qingmeng'
+    }
+    fn1()
+    // console.log(qm) // qm is not defined
+
+    // 全局作用域: 在任何地方都可以访问到
+    // 局部作用域/函数作用域: 仅在特定的范围内才可以访问到，其他的地方访问不到
+
+
+    var outer = '我是外层的一个变量' // outer全局变量
+    function outFun() { // outFun全局的
+      // 方法内形成了一个局部作用域
+      var inner = '我是一个内层的变量' // 局部变量
+
+      function inFun() { // 局部的
+        console.log(inner) // 我是一个内层的变量
+      }
+
+      inFun()
+    }
+
+    // console.log(outer) // 我是外层的一个变量
+    // outFun() // 正确执行
+    // console.log(inner) // inner is not defined
+    // inFun() // inFun is not defined
+
+
+    // var xxxx;
+    // console.log(xxxx) // undefiend 声明了变量但是没有做初始化赋值
+
+  
+    function fn2() {
+      a = 1 // 没有通过var关键字定义的变量 是全局变量
+      var b = 2 // 局部变量
+    }
+    fn2()
+    // console.log(a) // 1
+    // console.log(b) // b is not defined
+
+    // a同学写的
+    var str = 'abc'
+
+    // b同学写的
+    var str = 'def'
+    console.log(str)
+
+    // 我们自己定义的全局的变量和方法都会挂载到window对象下 
+    // window对象下的属属性具有全局作用域
+
+    // 函数立即调用 避免污染全局
+    ;(function() {
+      // 形成了一个局部作用域
+      // 在这里的变量方法都属于局部作用域的  都不会挂载到window上 不会对全局进行污染
+      var aa = 123
+    })()
+
+
+
+
+    function foo(a) {
+      var b = a * 2 
+
+      function bar(c) {
+        console.log(a, b ,c) // 2 4 12
+      }
+      bar(b * 3)
+    }
+
+    foo(2)
+
+
+
+    if (true) {
+      var d = 'hello world'
+    }
+    console.log(d)
+
+    //  i 是全局变量
+    for(var i = 0; i<10; i++) {
+      // do something
+    }
+    console.log(i) // 10
+
+
+  </script>
+</body>
+</html>
