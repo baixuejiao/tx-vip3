@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    函数的节流：
+      一个执行一次之后。只有大于设定的执行周期之后才执行第二次
+
+   -->
+  <script>
+    // document.onmousemove = function() {
+    //   console.log(Date.now())
+    // }
+
+
+    function throttle(fn, delay) {
+      var startTime = 0 // 上次执行的时间
+      
+      return function() {
+        // this -> dom
+        var nowTime = Date.now() // 此次执行的时间
+
+        if(nowTime - startTime > delay) {
+          fn.call(this)
+          startTime = nowTime
+        }
+      }
+    }
+
+    document.onmousemove = throttle(function(){
+      console.log(this)
+      console.log(Date.now()) 
+    }, 2000)
+
+
+  </script>
+
+</body>
+</html>

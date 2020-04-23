@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    防抖与节流： 减少函数不必要的触发次数，能够在一定程度上提高性能，避免资源的浪费
+    
+    函数防抖： 
+      一个需要频发触发的函数，在规定时间内只让最后一次生效，前面几次不生效
+
+    应用：
+      百度的搜索框
+
+   -->
+
+  <button id="btn">点击按钮</button>
+  <input type="text">
+
+  <script>
+    var oBtn = document.getElementById('btn')
+
+    // oBtn.onclick = function() {
+    //   console.log(Date.now())
+    // }
+
+    /**
+    *  debounce 防抖函数
+    * fn 需要防抖的一个方法
+    * delay 时间间隔
+    */
+    function debounce(fn, delay) {
+      var timer = null
+
+      // 用闭包的原因 是为了保存上一次的timer
+      return function(){
+        console.log('this:', this) // this => DOM 
+        
+        if(timer) clearTimeout(timer)
+        
+        timer = setTimeout(function() {
+          // window.setTimeout this -> window
+          fn.call(this)
+        }.bind(this), delay)
+      }
+    }
+
+    oBtn.onclick = debounce(function(){
+      console.log(this)
+      console.log(Date.now())
+    }, 3000)
+
+
+  </script>
+</body>
+</html>
