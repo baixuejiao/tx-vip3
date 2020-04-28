@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        普通函数 => 箭头函数
+        1.去掉 function 关键字
+        2.在() 和 {} 之间 加一个 => 
+
+        箭头函数
+            1. 函数体内的this指向的对象，是定义时所在的对象而不是使用时的对象
+                （箭头函数内部的this指向的是父作用域中的this）
+            2. 不可以当作构造函数（类），也就是说不可以使用new命令 负责会报错
+            3. 不可以使用arguments对象。arguments在函数体内不存在，如果要用的话，可以使用rest参数来代替
+     -->
+    <script>
+        // let fun = function() {
+        //     console.log('hello world')
+        // }
+
+        let fun = () => {
+            console.log('hello world')
+        }
+
+
+        // let person = {
+        //     name: 'zs',
+        //     age: 18,
+        //     eating: function() {
+        //         console.log(this) // person
+        //         setTimeout(function() {
+        //             console.log(this) // window
+        //         }, 1000)
+        //     }
+        // }
+
+        // let person = {
+        //     name: 'zs',
+        //     age: 18,
+        //     eating: function() {
+        //         console.log(this) // person
+                
+        //         setTimeout(() => {
+        //             console.log(this) // person
+        //         }, 1000)
+        //     }
+        // }
+
+        // person.eating()
+
+
+        // let person = {
+        //     name: 'zs',
+        //     age: 18,
+        //     eating: () => {
+        //         console.log(this) // window
+                
+        //         setTimeout(() => {
+        //             console.log(this) // window
+        //         }, 1000)
+        //     }
+        // }
+
+        // person.eating()
+
+
+        let person = {
+            name: 'zs',
+            age: 18,
+            eating: () => {
+                console.log(this) // window
+                
+                setTimeout(function() {
+                    console.log(this) // window
+                }, 1000)
+            }
+        }
+
+        // person.eating()
+
+        // Student(name, age) => {
+        //     this.name = name
+        //     this.age = age
+        // }
+        // let s1 = new Student('zs', 18)
+
+
+        // let fn = function() {
+        //     // console.log(x, y)
+        //     console.log(arguments)
+        // }
+
+        // fn(1, 2)
+
+        // ...rest 表示剩余的参数 它是一个数组里面是调用函数的时候传递的实参
+        let fn1 = (a, ...rest) => {
+            // console.log(arguments)
+            console.log(rest) // 
+        }
+
+        fn1(1, 2, 3)
+
+
+
+    </script>
+</body>
+</html>

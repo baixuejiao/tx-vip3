@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        const 和 var 的区别
+            1.  const 关键字声明的变量 不可以重复声明 否责会报错  
+            2.  const 关键字定义的变量不存在变量提升的问题，会报错
+            3. 在块级作用域内通过 const关键字声明的变量，在定义的作用域外获取不到对应的变量
+            4. 暂时性死区（在当前作用域内不允许有同名的变量进来）
+                在块级作用域内  const生命的变量会形成一个封闭性的死区，只能在声明之后调用，否则会报错
+
+     -->
+    <script>
+        // const 声明常量 只读的不可以修改
+        // const 定义的变量在声明的时候就必须赋值，赋值之后就不能修改
+        const PI = 3.14
+        console.log(PI)
+        
+        // PI = 3.1415926
+        // console.log(PI)
+        // const num
+
+        const arr = [1,2,3]
+        arr[1] = 4
+        console.log(arr)
+
+        /*
+            const 定义基本数据类型（Number String boolean undefined null） 基本数据类型存的就是值 值是不可以修改的
+            const 定义引用数据类型（Object， Array）引用数据类型存的是地址，地址是不能修改的 但内容可以修改
+        */
+
+        const obj = {
+            name: 'zs',
+            age: 18
+        }
+
+        obj.age = 20
+        console.log(obj)
+
+
+        const obj1 = {
+            name: 'zs',
+            age: 18
+        }
+        // freeze 冻结 冻结之后内容修改是不生效的，修改也不会报错
+        Object.freeze(obj1)
+        obj1.age = 20
+        console.log(obj1)
+
+    </script>
+</body>
+</html>
