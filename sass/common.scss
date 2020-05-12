@@ -1,0 +1,19 @@
+// 
+@mixin arrow ($dir:'top',$col:#000,$size:10px){
+    width:0;
+    height: 0;
+    border: $size solid transparent;
+    @if($dir == "top"){
+        border-bottom-color: $col;
+    }
+    @else if($dir == "bottom"){
+        border-top-color: $col;
+    }
+    @else if($dir == "left"){
+        border-right-color: $col;
+    }
+    @else if($dir == "right"){
+        border-left-color: $col;
+    }
+    // border-top-color: $col;
+}

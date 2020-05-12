@@ -1,0 +1,95 @@
+@charset "UTF-8";
+body .header .header-logo {
+  width: 300px;
+  height: 200px;
+}
+body .header a {
+  color: green;
+  border-left: 2px solid #000;
+  border-right: 2px solid pink;
+}
+body .header a:hover {
+  color: blue;
+}
+body #div1, body #div2 {
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-right-color: #f00;
+}
+
+.item1 {
+  width: 100px;
+}
+
+.item2 {
+  width: 200px;
+}
+
+.item3 {
+  width: 300px;
+}
+
+.item4 {
+  width: 400px;
+}
+
+.nav1 {
+  width: 100px;
+}
+
+.nav2 {
+  width: 200px;
+}
+
+.nav3 {
+  width: 300px;
+}
+
+.nav4 {
+  width: 400px;
+}
+
+.nav5 {
+  width: 500px;
+}
+
+.success {
+  width: 200px;
+}
+
+.error {
+  width: 200px;
+}
+
+.warn {
+  width: 200px;
+}
+
+.aa-5 {
+  width: 500px;
+}
+
+.aa-4 {
+  width: 400px;
+}
+
+.aa-3 {
+  width: 300px;
+}
+
+.aa-2 {
+  width: 200px;
+}
+
+.aa-1 {
+  width: 100px;
+}
+
+#div5 {
+  width: 500px;
+}
+
+/*注释2*/
+
+/*# sourceMappingURL=test1.css.map */
