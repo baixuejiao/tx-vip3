@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="val in arr">{{val}}</li>
+        </ul>
+        <h2>{{msg}}</h2>
+        <button v-on:click="fn(2,$event)">click</button>
+        <input type="text" @keyup.enter="keyupHandle">
+    </div>
+    <script src="vue.js"></script>
+    <script>
+       let vm =  new Vue({
+            el:"#app",
+            data:{
+                msg:"你好呀 ！",
+                arr:[
+                    'zhangsan',
+                    'lisi',
+                    'wangwu'
+                ]
+            },
+            methods:{
+                fn(num,e){
+                    console.log(num,e.target);
+                    this.msg = "哈哈哈！"
+                    // console.log('ok')
+                    this.arr.push('zhaoliu');
+                },
+                keyupHandle(e){
+                    console.log('回车')
+                    // if(e.keyCode == 13){
+                    //     console.log('asdfgyhjkl;')
+                    // }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            background: red;
+        }
+        .b{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind绑定属性  属性值不是写死  动态值 -->
+        <!-- <h2 v-bind:id="id1"></h2> -->
+        <h2 :id="id1"></h2>
+        <p class="a b">
+            hahah
+        </p>
+        <p :class="{a:isA,b:isB}">
+            hahah
+        </p>
+        <p :class="[classA,classB]">
+            hahah
+        </p>
+        <div :style="[styleA,styleB]">
+            heheh
+        </div>
+        <div :style="styleObject">
+            heheh
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                id1:'a',
+                isA:false,
+                isB:false,
+                classA:'a',
+                classB:'',
+                styleA:{
+                    width:'200px',
+                    background:'green'
+                },
+                styleB:{
+                    height:'200px'
+                },
+                styleObject:{
+                    width:'200px',
+                    height:'200px',
+                    background:'pink'
+                }
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

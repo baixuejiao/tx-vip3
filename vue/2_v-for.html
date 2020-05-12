@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="val in arr">{{val}}</li>
+        </ul>
+    </div>
+    <!-- ！！！！不要操作dom 操作数据  （数据变了 页面就会变） -->
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{ //数据
+                arr:['zhangsan','lisi','wangwu','dfghj']
+            }
+        })
+
+
+    </script>
+</body>
+</html>
