@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *{
+            margin: 0;
+            padding: 0;
+        } */
+        #container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .list-right {
+            float: right;
+        }
+
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <h2>todolist</h2>
+        <hr>
+        <div>
+            <label for="name">名称：</label>
+            <input type="text" id="name" placeholder="请输入名称" v-model="name">
+            <label for="price">价格：</label>
+            <input type="text" id="price" placeholder="请输入价格" v-model="price">
+            <button @click="add()">添加</button>
+        </div>
+        <div>
+            <input type="text" placeholder="请输入搜索内容" v-model="searchValue" @keyup="searchHandel()">
+            <button>搜索</button>
+        </div>
+        <ul>
+            <li v-for="(obj,index) in list"
+                 @click="selectHandle(obj)"
+                :class="{red:obj.isSelect}"
+                v-if="obj.isInclude"
+            >
+                <input type="checkbox" v-model="obj.isSelect">
+                <span>{{obj.name}}</span>
+                <div class="list-right">
+                    <span>{{obj.price}}</span>
+                    <span @click.stop="deleteHandel(index)">[X]</span>
+                </div>
+            </li>
+
+        </ul>
+        <div>
+            <button @click="deleteAll()">删除选中</button>
+            <span>总价{{total()}}</span>
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#container",
+            data: {
+                list: [
+                    {
+                        name: "苹果",
+                        price: "5",
+                        isSelect: false,//记录是否被选中 true选中| false没被选中
+                        isInclude:true//记录是否包含搜索内容  true包含 | false不包含
+                    },
+                    {
+                        name: "apple",
+                        price: "8888",
+                        isSelect: false,//记录是否被选中 true选中| false没被选中
+                        isInclude:true//记录是否包含搜索内容  true包含 | false不包含
+                    }
+                ],
+                name: '',
+                price: '',
+                searchValue:""
+            },
+            methods: {
+                add() {
+                    // 获取到name和price 生成对象 =>push到list数组中
+                    this.list.push({
+                        name: this.name,
+                        price: this.price,
+                        isSelect: false,
+                        isInclude:false
+                    })
+                },
+                selectHandle(obj) {
+                    // console.log(obj)
+                    obj.isSelect = !obj.isSelect;
+                },
+                deleteHandel(index) {
+                    // 删除数组中索引是index的元素 
+                    this.list.splice(index, 1);
+                },
+                // 删除选中
+                deleteAll() {
+                    // list数组中所有isSelect== false （没被选中的）
+                    let arr = this.list.filter((obj, index) => {
+                        return obj.isSelect == false;
+                    });
+                    this.list = arr;
+                },
+                // 计算总价
+                total() {
+                    let sum = 0;
+                    this.list.forEach((obj) => {
+                        if (obj.isSelect) {
+                            sum += obj.price*1;
+                        }
+                    })
+                    return sum;
+                },
+                searchHandel(){
+                    // console.log(this.searchValue);
+                    // list列表中包含  this.searchValue的元素 显示，否则隐藏
+                    this.list.forEach((obj)=>{
+                        // 判断是否包含 如果包含 添加一个标识 isInclude = true 
+                        if(obj.name.includes(this.searchValue)){
+                            obj.isInclude = true;
+                        }else{
+                            obj.isInclude = false;
+                        }
+                    })
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

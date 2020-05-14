@@ -9,8 +9,8 @@
     <div id="app">
         <div v-if="flag">哈哈</div>
         <div v-else>呵呵</div>
-        <!-- v-show 通过display 属性控制元素显示 -->
-        <div v-show="isShow">dfghjkl;</div>
+        <!-- v-show true显示 通过display 属性控制元素显示 -->
+        <div v-show="x == 1">dfghjkl;</div>
     </div>
     <script src="vue.js"></script>
     <script>
@@ -18,7 +18,8 @@
             el:"#app",
             data:{
                 flag:false,
-                isShow:false
+                isShow:false,
+                x:1
             }
         })
 
