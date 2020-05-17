@@ -63,6 +63,10 @@
         <div>
             <button @click="deleteAll()">删除选中</button>
             <span>总价{{total()}}</span>
+            <span>总价{{total()}}</span>
+            <span>总价{{total()}}</span>
+            <span>计算总价{{zongjia}}</span>
+            <span>计算总价{{zongjia}}</span>
         </div>
     </div>
 
@@ -136,6 +140,18 @@
                             obj.isInclude = false;
                         }
                     })
+                }
+            }
+            ,
+            computed:{
+                zongjia(){
+                    let sum = 0;
+                    this.list.forEach((obj) => {
+                        if (obj.isSelect) {
+                            sum += obj.price*1;
+                        }
+                    })
+                    return sum;
                 }
             }
         })

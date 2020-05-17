@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="fn">click</button>
+        <button @click="destory()">销毁</button>
+        <h2 id="message">{{msg}}</h2>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:'hello',
+                arr:[1,2,3]
+            },
+            beforeCreate(){
+                console.log("beforeCreate",this.$data,this.$el)
+            },
+            created(){
+                console.log("created",this.$data,this.$el)
+            },
+            // 挂载之前
+            beforeMount(){
+                console.log("beforeMount",this.$data,this.$el)
+            },
+            mounted(){
+                console.log("mounted",this.$data,this.$el)
+            },
+            beforeUpdate(){
+                console.log("beforeUpdate",this.$data,document.getElementById('message').innerHTML)
+            },
+            updated(){
+                console.log("updated",this.$data,document.getElementById('message').innerHTML)
+            },
+            beforeDestroy(){
+                console.log("beforeDestroy")
+            },
+            destroyed(){
+                console.log("destroyed")
+            },
+            methods:{
+                fn(){
+                    this.msg = "hahaha!!"
+                },
+                destory(){
+                    vm.$destroy();
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

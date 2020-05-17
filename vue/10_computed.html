@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+
+        <h2>{{reverse}}</h2>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                message:"hello world!"
+            },
+            // 计算属性
+            computed:{
+                // 实现字符串反转
+                reverse(){
+                    return this.message.split("").reverse().join("");
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

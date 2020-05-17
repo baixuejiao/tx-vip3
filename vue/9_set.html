@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="app">
+        <button @click="change()">change</button>
+        <li v-for="val in arr"> {{val}}</li>
+    </ul>
+    <script src="vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                arr:[1,2,3,4]
+            },
+            methods:{
+                change(){
+                    // 通过索引去修改数组  页面不更新
+                    // this.arr[0] = 6;
+                    Vue.set(this.arr,0,6);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
