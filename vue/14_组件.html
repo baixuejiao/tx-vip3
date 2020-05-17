@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 主 -->
+    <div id="app">
+        <hello name="lisi"></hello>
+    </div>
+    <!-- <div id="app1">
+        <hello></hello>
+    </div> -->
+    <template id="temp">
+        <h2>hello 你好 {{name}} </h2>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        // 全局组件
+        // Vue.component("hello",{
+        //     template:"<h2>hello 你好</h2>"
+        // })
+        // 局部组件
+        new Vue({
+            el:"#app",
+            components:{
+                "hello":{
+                    template:"#temp",
+                    props:["name"]  //父组件传到子组件的参数
+                }
+            }
+        });
+        // new Vue({
+        //     el:"#app1",
+        // })
+
+
+    </script>
+    
+</body>
+</html>
