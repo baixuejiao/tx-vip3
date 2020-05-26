@@ -1,0 +1,60 @@
+{
+  "musicData": [
+    {
+      "title": "平凡之路",
+      "artist": "朴树",
+      "src": "http://m7.music.126.net/20200526190809/724aa34afb9a8e5de4c4bae18b606f69/ymusic/a5ad/d310/fe7b/1324c514385ba9187563abbe0a89fe45.mp3",
+      "pic": "http://p2.music.126.net/W_5XiCv3rGS1-J7EXpHSCQ==/18885211718782327.jpg",
+      "lrc": "http://localhost:8080/lrc/我要你.lrc"
+    },
+    {
+      "title": "因为爱情",
+      "artist": "陈奕迅",
+      "src": "http://m7.music.126.net/20200526190855/b6058d8a39229584338de2093e56e1f1/ymusic/c69c/aeed/2bd9/57487636f38ec8ef9355bf67d0741dfe.mp3",
+      "pic": "http://p1.music.126.net/GGYQjJ-zDEivv9l6QgJUFg==/109951163020567917.jpg",
+      "lrc": "http://localhost:8080/lrc/广东爱情故事.lrc"
+    },
+    {
+      "title": "成都",
+      "artist": "赵雷",
+      "src": "http://m701.music.126.net/20200526190921/3c0e4db9fd79963dfb2b6d59e33e5117/jdymusic/obj/w5zDlMODwrDDiGjCn8Ky/2080844849/11e3/2cf1/87a7/7f5489c5131b3551f3297583cd52cc80.mp3",
+      "pic": "http://p2.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg",
+      "lrc": "http://localhost:8080/lrc/就是爱你.lrc"
+    },
+    {
+      "title": "海阔天空",
+      "artist": "Beyond",
+      "src": "http://m7.music.126.net/20200526190947/7285cbb0488dc6bf23d0158b7f6eec86/ymusic/c98b/b4e1/4080/f6c0667bd9ccded6f9531c1a4b7fcb09.mp3",
+      "pic": "http://p1.music.126.net/QHw-RuMwfQkmgtiyRpGs0Q==/102254581395219.jpg",
+      "lrc": "http://localhost:8080/lrc/最美的期待.lrc"
+    },
+    {
+      "title": "平凡之路",
+      "artist": "朴树",
+      "src": "http://m7.music.126.net/20200526190809/724aa34afb9a8e5de4c4bae18b606f69/ymusic/a5ad/d310/fe7b/1324c514385ba9187563abbe0a89fe45.mp3",
+      "pic": "http://p2.music.126.net/W_5XiCv3rGS1-J7EXpHSCQ==/18885211718782327.jpg",
+      "lrc": "http://localhost:8080/lrc/我要你.lrc"
+    },
+    {
+      "title": "因为爱情",
+      "artist": "陈奕迅",
+      "src": "http://m7.music.126.net/20200526190855/b6058d8a39229584338de2093e56e1f1/ymusic/c69c/aeed/2bd9/57487636f38ec8ef9355bf67d0741dfe.mp3",
+      "pic": "http://p1.music.126.net/GGYQjJ-zDEivv9l6QgJUFg==/109951163020567917.jpg",
+      "lrc": "http://localhost:8080/lrc/广东爱情故事.lrc"
+    },
+    {
+      "title": "成都",
+      "artist": "赵雷",
+      "src": "http://m701.music.126.net/20200526190921/3c0e4db9fd79963dfb2b6d59e33e5117/jdymusic/obj/w5zDlMODwrDDiGjCn8Ky/2080844849/11e3/2cf1/87a7/7f5489c5131b3551f3297583cd52cc80.mp3",
+      "pic": "http://p2.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg",
+      "lrc": "http://localhost:8080/lrc/就是爱你.lrc"
+    },
+    {
+      "title": "海阔天空",
+      "artist": "Beyond",
+      "src": "http://m7.music.126.net/20200526190947/7285cbb0488dc6bf23d0158b7f6eec86/ymusic/c98b/b4e1/4080/f6c0667bd9ccded6f9531c1a4b7fcb09.mp3",
+      "pic": "http://p1.music.126.net/QHw-RuMwfQkmgtiyRpGs0Q==/102254581395219.jpg",
+      "lrc": "http://localhost:8080/lrc/最美的期待.lrc"
+    }
+  ]
+}
