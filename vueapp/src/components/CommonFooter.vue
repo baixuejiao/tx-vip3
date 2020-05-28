@@ -39,7 +39,7 @@ export default {
         console.log(this.$route.path);
         // 获取到当前页面的路由的path  判断path和meun数组中的拿个对象是匹配的  change() ->obj
         this.menu.forEach((obj,index)=>{
-            if(obj.path == this.$route.path){
+            if(this.$route.path.includes(obj.path)){
                 this.$store.commit('change',obj);
             }
         })
