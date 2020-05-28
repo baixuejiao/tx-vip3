@@ -5,9 +5,14 @@ import Music from './../views/Music'
 import Book from './../views/Book'
 import Photo from './../views/Photo'
 import MovieDetail from './../views/MovieDetail'
+import MusicList from './../views/MusicList'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    redirect:'/movie'
+  },
   {
     path: '/movie',
     name: 'movie',
@@ -22,6 +27,11 @@ const routes = [
     path: '/music',
     name: 'music',
     component: Music
+  },
+  {
+    path: '/musiclist',
+    name: 'musiclist',
+    component: MusicList
   },
   {
     path: '/book',

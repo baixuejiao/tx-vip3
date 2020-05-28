@@ -91,7 +91,8 @@ ul {
     display: flex;
     margin-bottom: 8px;
     img {
-      width: 80px;
+      // width: 80px;  1rem = 50   
+      width:1.6rem;
       margin-right: 5px;
     }
     .info {
