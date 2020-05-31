@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <!-- 
+        jsx 1、根元素只能有一个
+            2、所有标签必须闭合
+     -->
+    <script type="text/babel">
+        let a = 10;
+        let b = 20;
+        ReactDOM.render(
+            <div>
+                <h2>hello world!!</h2>
+                <p>lalallala~~~{a+b}</p>
+            </div>
+            , 
+            document.getElementById('root')
+        )
+    </script>
+</body>
+
+</html>

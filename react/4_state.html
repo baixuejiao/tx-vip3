@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+        /*  state  存储状态 -> 用于改变组件内容状态的值（动态的）
+        */
+        class Hello extends React.Component {
+            constructor() {
+                super();
+                // 初始化state
+                this.state = {
+                    msg: 'hello'
+                }
+                this.change = this.change.bind(this);
+            }
+            //自定义方法 this->undefined  修改状态
+            change(){
+                console.log(this);
+                // 修改state   setState
+                this.setState({
+                    msg:"你好"
+                })
+            }
+            // 获取state {this.state.msg}
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.change}>click</button>
+                        {this.state.msg}
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Hello></Hello>,
+            document.getElementById('root')
+        )
+
+    </script>
+</body>
+
+</html>
