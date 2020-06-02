@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+
+        .aa {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        class Main extends React.Component {
+            render() {
+                let style = {
+                    width: '200px',
+                    height: '200px',
+                    background:'green'
+                }
+                return (
+                    // <div className="aa" id="div1">
+                    //     <h2>sdfghjkl</h2>
+                    // </div>
+                    <div style={style}>
+                        <h2>sdfghjkl</h2>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+
+</html>

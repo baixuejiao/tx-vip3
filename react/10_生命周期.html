@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+
+        class Main extends React.Component {
+            constructor(){
+                super();
+                this.state = {
+                    num:""
+                }
+                console.log('constructor')
+            }
+            componentWillMount(){
+                console.log("componentWillMount")
+            }
+            componentDidMount(){
+                console.log("componentDidMount");
+                this.timer = setInterval(()=>{
+                    console.log(Math.random())
+                },1000)
+            }
+            // 性能优化 
+            shouldComponentUpdate(nprops,nstate){
+                console.log('shouldComponnetUpdate',nprops,nstate);
+                return true;
+            }
+            componentWillUpdate(){
+                console.log('componentWillUpdate',document.getElementById("title").innerHTML);
+            }
+            componentDidUpdate(){
+                console.log('componentDidUpdate',document.getElementById("title").innerHTML);
+            }
+            componentWillUnmount(){
+                clearInterval(this.timer);
+            }
+            render() {
+                console.log('render')
+                return (
+                    <div>
+                        <h2 id="title">青盟 {this.state.num}</h2>
+                        <A name="你好"></A>
+                        <button onClick={()=>{
+                            this.setState({
+                                num:666
+                            })
+                        }}>click</button>
+                        <button onClick={()=>{
+                            ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+                        }}>销毁</button>
+                    </div>
+                )
+
+            }
+        }
+        class A extends React.Component{
+            constructor(){
+                super();
+                console.log('A  constructor ')
+            }
+            componentWillMount(){
+                console.log("A  componentWillMount")
+            }
+            componentDidMount(){
+                console.log("A  componentDidMount");
+            }
+            componentWillReceiveProps(){
+                console.log("A componentWillReceiveProps")
+            }
+            // 性能优化 
+            shouldComponentUpdate(nprops,nstate){
+                console.log('A  shouldComponnetUpdate',nprops,nstate);
+                return true;
+            }
+            componentWillUpdate(){
+                console.log('A componentWillUpdate');
+            }
+            componentDidUpdate(){
+                console.log('A  componentDidUpdate');
+            }
+            componentWillUnmount(){
+                console.log("A componentWillUnmount")
+            }
+            render(){
+                return (
+                    <h3>{this.props.name}</h3>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+
+</body>
+
+</html>

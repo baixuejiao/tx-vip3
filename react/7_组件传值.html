@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        /*
+            组件通信 
+            父组件到子组件 props
+            子组件到父组件 传递方法 
+        */ 
+        class Main extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    num:1
+                }
+                this.change = this.change.bind(this);
+            }
+            change(count){
+                // console.log(111);
+                this.setState({
+                    num:count
+                })
+            }
+            render(){
+                return (
+                    <div>
+                        <h2>我是main组件{this.state.num}</h2>
+                        <A name="hahah" change={this.change}/>
+                    </div>
+                )
+            }
+        }
+
+        class A extends React.Component{
+            render(){
+                return (
+                    <div className="a">
+                        <h5>我是A {this.props.name}</h5>
+                        <button onClick={
+                            ()=>{
+                                this.props.change(100);
+                            }
+                        }>click</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+
+    
+    </script>
+</body>
+</html>
