@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background: red;
+        }
+        li{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        class Main extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    menu: [
+                        { name: '吃饭', isActive: false ,isInclude:true},
+                        { name: '睡觉', isActive: false ,isInclude:true},
+                        { name: '学习', isActive: false ,isInclude:true}
+                    ]
+                }
+                this.addHandle = this.addHandle.bind(this);
+                this.change = this.change.bind(this);
+                this.delHandel = this.delHandel.bind(this);
+                this.searchHandle = this.searchHandle.bind(this);
+            }
+            addHandle(val) {
+                // console.log(val)
+                this.setState({
+                    menu: [...this.state.menu, { name: val, isActive: false,isInclude:true }]
+                })
+            }
+            change(index) {
+                // console.log(index)
+                let arr = [...this.state.menu];
+                arr[index].isActive = !arr[index].isActive;
+                this.setState({
+                    menu: arr
+                })
+            }
+            delHandel(index) {
+                let arr = [...this.state.menu];
+                arr.splice(index, 1);
+
+                this.setState({
+                    menu: arr
+                })
+
+            }
+            searchHandle(val){
+                let arr = this.state.menu;
+                arr.forEach((obj)=>{
+                    if(obj.name.includes(val)){
+                        obj.isInclude = true;
+                    }else{
+                        obj.isInclude = false;
+                    }
+                });
+                this.setState({
+                    menu:arr
+                })
+
+            }
+            render() {
+                return (
+                    <div id="container">
+                        <h2>todolist</h2>
+                        <Search searchHandle={this.searchHandle}></Search>
+                        <Add addHandle={this.addHandle}></Add>
+                        <List change={this.change} delHandel={this.delHandel} menu={this.state.menu}></List>
+                    </div>
+                )
+            }
+        }
+        class Search extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <label htmlFor="search">搜索</label>
+                        <input type="text" id="search"
+                            onChange={(e) => {
+                                this.props.searchHandle(e.target.value)
+                            }} />
+                    </div>
+                )
+            }
+        }
+
+        class Add extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <label htmlFor="">添加</label>
+                        <input type="text" ref={input => this.myInput = input} />
+                        <button onClick={() => {
+                            // menu数组中追加一条  
+                            this.props.addHandle(this.myInput.value);
+                            this.myInput.value = "";
+                        }}>添加</button>
+                    </div>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            render() {
+                return (
+                    <ul>
+                        {
+                            this.props.menu.map((obj, index) => {
+                                let isActive  = obj.isActive ? 'red' : '';
+                                let isShow = obj.isInclude?'show':'';
+                                return (
+                                    <li key={index}
+                                        className={isActive +" "+isShow}
+                                        onClick={() => {
+                                            this.props.change(index)
+                                        }}>
+                                        <span>{obj.name}</span>
+                                        <button onClick={(e) => {
+                                            // 删除
+                                            this.props.delHandel(index);
+                                            e.stopPropagation();
+
+                                        }}>del</button>
+                                    </li>)
+                            })
+                        }
+                    </ul>
+                )
+
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>
