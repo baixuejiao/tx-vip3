@@ -17,6 +17,7 @@ import C from './views/C'
 import E from './views/E'
 import F from './views/F'
 import G from './views/G'
+import Demo from './views/Demo'
 function App() {
   return (
     <div className="App">
@@ -31,7 +32,9 @@ function App() {
         <NavLink to="/children">children</NavLink>|
         <Link to="/home">home页</Link>|
         <Link to="/e">E页</Link>|
-        <Link to="/f">F页</Link>
+        <Link to="/f">F页</Link>|
+        <Link to="/demo">MOCK数据页</Link>
+
         {/* <Switch>
             <Route path="/a" component={A}></Route>
             <Route path="/b" component={B}></Route>
@@ -61,6 +64,7 @@ function App() {
         }}></Route>
         <Route path="/e" component={E}></Route>
         <Route path="/f" component={F}></Route>
+        <Route path="/demo" component={Demo}></Route>
         
 
       </Router>
