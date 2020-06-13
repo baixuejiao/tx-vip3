@@ -1,0 +1,5 @@
+@import '~antd/dist/antd.css';
+.nav{
+  height: 100vh;  
+  background: #001529;
+}
