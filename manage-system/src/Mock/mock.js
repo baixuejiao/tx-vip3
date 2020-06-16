@@ -1,0 +1,22 @@
+import Mock from 'mockjs'
+Mock.mock('http://www.qmtech.com/login',{
+    'errno':0,
+    'errmsg':'SUCCESS',
+    'data':{
+        'name':'@cname',
+        'image':'@image("60px*60px")'
+    }
+})
+Mock.mock('http://www.qmtech/getdata',{
+    'errno':0,
+    'errmsg':'SUCCESS',
+    'data':{
+        'list|5-15':[
+            {
+                'id|+1':10,
+                'title':'@ctitle',
+                'status|1':false
+            }
+        ]
+    }
+})

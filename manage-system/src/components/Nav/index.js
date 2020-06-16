@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Menu } from 'antd';
 import menuList from './../../config/menuConfig';
 import { createFromIconfontCN } from '@ant-design/icons';
-
+import { Link } from 'react-router-dom'
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1723185_hpwsfvxytgm.js',
+    scriptUrl: '//at.alicdn.com/t/font_1723185_hpwsfvxytgm.js',
 });
 
 const { SubMenu } = Menu;
@@ -26,18 +26,23 @@ class Nav extends Component {
                                         <IconFont type={item.icon} />
                                         <span>{item.title}</span>
                                     </span>
-                                    }>
+                                }>
                                     {
-                                        item.children.map(obj=>(
-                                            <Menu.Item key={obj.path}>{obj.title}</Menu.Item>
+                                        item.children.map(obj => (
+                                            <Menu.Item key={obj.path}>
+                                                <Link to={obj.path}>
+                                                    {obj.title}
+                                                </Link>
+                                            </Menu.Item>
                                         ))
                                     }
                                 </SubMenu>
                             ) : (
                                     <Menu.Item key={item.path} >
-                                        <IconFont type={item.icon} />
-
-                                        {item.title}
+                                        <Link to={item.path}>
+                                            <IconFont type={item.icon} />
+                                            {item.title}
+                                        </Link>
                                     </Menu.Item>
                                 )
                         ))
